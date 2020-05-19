@@ -204,7 +204,7 @@
     - url = "test.com/args_input?args1=test     # get방식으로 전달된 args1
     - request.args.get("args1")                 # 변수 명으로 접근
     -
-    - render_template("page", args1="test")     # 위의 url과 같은 값으로 인자 전달
+    - render_template("page", args1="test")     # 위의 url과 같은 값으로 인자 전달 || page는 "templates/"폴더에 있어야 한다.
     - <h1>{{args1}}<h1>                         # {{args_name}} 을 통해 호출 가능
 
 # 4-4 Scrapper Integration
@@ -219,4 +219,13 @@
     - {{ }}                 # 변수 출력만 가능
 
 # 4-7 Export Route
-    - 
+    - db에 저장된 데이터 있을시 다운로드 링크로 이동    # data -> csv로 출력
+
+# 4-8 File Download
+    - import flas from send_file            # send_file 파일 전송
+
+# 4-9 Recap
+    - 강의 복습
+
+# 4-10 Conclusions  
+    - 코드 정리
