@@ -21,28 +21,35 @@ def get_count_page(url):
     return count_page
 
 def extract_job_detail(job_card):
-    #print(job_card)
-    title = job_card.find_all("a")
-    print(len(title))
-
-    for ti in title:
-        print(ti)
+    title = job_card.find("h2", {"class":"title"}).find("a").text.strip()
+    link = job_card["data-jk"]
+    company = job_card.find("span", {"class":"company"}).text.strip()
+    location = job_card.find("div", {"class":"recJobLoc"})["data-rc-loc"].rstrip()
     
+    return {
+        'title': title,
+        'company': company,
+        'location': location,
+        "link": f"https://kr.indeed.com/viewjob?jk={link}"
+    }
+
+
 
 def extract_jobs(word):
     url = f"https://kr.indeed.com/jobs?q={word}&limit=50"
     jobs = []
     count_page = get_count_page(url)
 
-    #for page in range(last_page):
-    page = 0
-    result = requests.get(f"{url}&start={page*LIMIT}")
-    soup = BeautifulSoup(result.text, "html.parser")
-    results = soup.find_all("div", {"class":"jobsearch-SerpJobCard"})
+    for page in range(count_page):
+        result = requests.get(f"{url}&start={page*LIMIT}")
+        soup = BeautifulSoup(result.text, "html.parser")
+        results = soup.find_all("div", {"class":"jobsearch-SerpJobCard"})
 
-    for result in results:
-        job = extract_job_detail(result)
-        jobs.append(job)
-        break
+        for result in results:
+            job = extract_job_detail(result)
+            jobs.append(job)
 
-extract_jobs(key_word)
+    return jobs
+
+result = extract_jobs(key_word)
+print(result)
