@@ -229,3 +229,13 @@
 
 # 4-10 Conclusions  
     - 코드 정리
+
+# Django 설치 (Window)
+    - cmd 실행
+    - pip install django
+
+# Django 프로젝트 시작
+    - 작업 dir 이동
+    - django-admin startproject PROJECT_NAME        # PROJECT_NAME으로 프로젝트 디렉토리 생성
+    - cd PROJECT_NAME                               # 생성된 프로젝트 디렉토리로 이동
+    - manage.py                                     # 디렉토리 안의 python 파일 수행
