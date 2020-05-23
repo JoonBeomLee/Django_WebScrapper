@@ -240,6 +240,22 @@
     - cd PROJECT_NAME                               # 생성된 프로젝트 디렉토리로 이동
     - manage.py                                     # 디렉토리 안의 python 파일 수행
 
+# Django DB연동
+    - DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+    'MYSQL': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_mysql',
+        'USER': 'root',
+        'PASSWORD': 'dblab2316',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    },
+}
+
 # Django View | Template | Urls 파일
     - View 파일
     - from django.shortcuts import render           # render함수 통해 html파일 호출
@@ -255,3 +271,12 @@
     - urlpatterns = [
     -   path('', views.index, name="index"),            # '' = 접근 경로, view에서 정의한 이동할 페이지 함수  
     - ]
+
+# Django Get 전달
+    - def search_job(request):                                      # /search_job/?search_word=python
+    -   args_var = request.GET.get('args')                          # args명으로 search_word
+    -   context = {"args_name": args_var}                           # dict 형태로 생성
+    -   return render(request, "search.html", context)              # 생성된 dict 전달
+    -
+    - search.html
+    - {{ args_name }}                                               # 전달된args_name으로 접근 가능
