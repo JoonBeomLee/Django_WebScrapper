@@ -239,3 +239,19 @@
     - django-admin startproject PROJECT_NAME        # PROJECT_NAME으로 프로젝트 디렉토리 생성
     - cd PROJECT_NAME                               # 생성된 프로젝트 디렉토리로 이동
     - manage.py                                     # 디렉토리 안의 python 파일 수행
+
+# Django View | Template | Urls 파일
+    - View 파일
+    - from django.shortcuts import render           # render함수 통해 html파일 호출
+    - def index(request):
+    -   return render(request, 'index.html')        # 함수명 = 파일명
+    -
+    - Template 경로 설정
+    - settings.py 파일 내 TEMPLATES의 DIR 추가 
+    - DIR = [os.path.join(BASE_DIR,'project_name','templates'),]  # project_name에 manage.py있는 폴더 명
+    -
+    - Urls 파일
+    - from . import views                               # view 파일 import
+    - urlpatterns = [
+    -   path('', views.index, name="index"),            # '' = 접근 경로, view에서 정의한 이동할 페이지 함수  
+    - ]
