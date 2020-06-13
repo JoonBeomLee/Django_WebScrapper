@@ -138,7 +138,7 @@
 
 # 3-1 *args **kwargs
     - function(*args)           # 인자 복수 전달 가능
-    - function(**kewargs)       # keyword 인자 전달 가능 ex) function(a1="Asd", b1="Bsd")
+    - function(**kwargs)       # keyword 인자 전달 가능 ex) function(a1="Asd", b1="Bsd")
 
 # 3-2 Intro to Object Oriented Programming
     - class class_name():           # class 정의
@@ -241,20 +241,21 @@
     - manage.py                                     # 디렉토리 안의 python 파일 수행
 
 # Django DB연동
-    - DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
-    'MYSQL': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_mysql',
-        'USER': 'root',
-        'PASSWORD': 'dblab2316',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    },
-}
+    - settings.py 파일                                          
+    - DATABASES = {                                 
+    -    'default': {                                                           # 기존 설정
+    -        'ENGINE': 'django.db.backends.sqlite3',
+    -        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    -    },
+    -    'MYSQL': {                                                             # MYSQL 추가 설정
+    -        'ENGINE': 'django.db.backends.mysql',
+    -        'NAME': 'django_mysql',                                            # DB명
+    -        'USER': 'root',                                                    # 사용자
+    -        'PASSWORD': 'dblab2316',                                           # pw
+    -        'HOST': 'localhost',                                               # 연결 ip
+    -        'PORT': '3306',                                                    # 연결 port
+    -    },
+    - }
 
 # Django View | Template | Urls 파일
     - View 파일

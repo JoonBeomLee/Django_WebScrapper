@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+# default
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -31,12 +31,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # default
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # add models
+    'project_django',
 ]
 
 MIDDLEWARE = [
@@ -77,13 +80,17 @@ WSGI_APPLICATION = 'project_django.wsgi.application'
 
 
 # DEFAULT DB SETTINGS
-# ADD DB(MYSQL) SETTINGS 
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-    'MYSQL': {
+}
+"""
+# ADD DB(MYSQL) SETTINGS 
+DATABASES = {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'django_mysql',
         'USER': 'root',

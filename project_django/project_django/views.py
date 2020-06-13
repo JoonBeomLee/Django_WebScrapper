@@ -5,9 +5,9 @@ from django import forms
 def index(request):
     return render(request, 'index.html')
 
-
 # view search
 def search_job(request):
     key_word = request.GET.get('search_word')
     context = {"key_word": key_word}
+
     return render(request, "search.html", context)

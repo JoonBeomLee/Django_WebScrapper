@@ -50,6 +50,4 @@ def extract_jobs(word):
             jobs.append(job)
 
     return jobs
-
-result = extract_jobs(key_word)
-print(result)
+    
